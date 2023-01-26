@@ -1,41 +1,41 @@
 const express = require("express");
-
 const app = express();
 
 const PORT = 3000;
 
 const friends = [
 	{
-		id: 0,
-		name: "Albert Einstein",
-	},
-
-	{
 		id: 1,
 		name: "Isaac Newton",
 	},
+
+	{
+		id: 2,
+		name: "Nikola Tesla",
+	},
 ];
 
-app.get("/friends", (req, res) => {
-	res.json(friends);
+app.get("/", (req, res) => {
+	res.status(200).send("This is the home page");
 });
 
-app.get("/friends/:friendId", (req, res) => {
-	const friendId = Number(req.params.friendId);
-	const friend = friends[friendId];
+app.get("/friends", (req, res) => {
+	res.status(200).send(friends);
+});
+
+app.get("/friends/:id", (req, res) => {
+	const id = parseInt(req.params.id);
+	const friend = friends[id];
+
 	if (friend) {
 		res.status(200).json(friend);
 	} else {
-		res.status(404).json({
-			error: "Friend does not exist",
+		res.status(400).json({
+			Error: "No such friend exists",
 		});
 	}
 });
 
-app.post("/messages", (req, res) => {
-	console.log("Updating messages");
-});
-
 app.listen(PORT, () => {
-	console.log(`Server running on port ${PORT}`);
+	console.log(`Server running on port ${PORT}...`);
 });
