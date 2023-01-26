@@ -1,19 +1,10 @@
 const express = require("express");
+
+const friendsController = require("./controllers/friends.controller");
+const messagesController = require("./controllers/messages.controller");
 const app = express();
 
 const PORT = 3000;
-
-const friends = [
-	{
-		id: 0,
-		name: "Isaac Newton",
-	},
-
-	{
-		id: 1,
-		name: "Nikola Tesla",
-	},
-];
 
 app.use((req, res, next) => {
 	const start = Date.now();
@@ -24,38 +15,12 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-app.post("/friends", (req, res) => {
-	if (!req.body.name) {
-		return res.status(400).json({
-			error: "Missing friend name",
-		});
-	}
+app.post("/friends", friendsController.postFriend);
+app.get("/friends", friendsController.getFriends);
+app.get("/friends/:id", friendsController.getFriend);
 
-	const newFriend = {
-		id: friends.length,
-		name: req.body.name,
-	};
-
-	friends.push(newFriend);
-	res.json(friends);
-});
-
-app.get("/friends", (req, res) => {
-	res.status(200).send(friends);
-});
-
-app.get("/friends/:id", (req, res) => {
-	const id = parseInt(req.params.id);
-	const friend = friends[id];
-
-	if (friend) {
-		res.status(200).json(friend);
-	} else {
-		res.status(400).json({
-			Error: "No such friend exists",
-		});
-	}
-});
+app.get("/messages", messagesController.getMessages);
+app.post("/messages", messagesController.postMessage);
 
 app.listen(PORT, () => {
 	console.log(`Server running on port ${PORT}...`);
