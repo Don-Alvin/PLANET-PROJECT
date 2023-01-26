@@ -1,0 +1,13 @@
+What is CORS
+
+CORS stands for Cross Oringin Resource Sharing
+
+It is a way of relaxing the restrictions that the same origin policy puts on us developers so that we can make applications
+that span different domains.
+
+POSTing data to a a server
+
+To post data to a server, we always use POST request, although put can also be used.
+
+POST is used to add new data.
+PUT is used to updated already existing data.
