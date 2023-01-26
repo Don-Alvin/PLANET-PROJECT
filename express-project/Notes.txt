@@ -1,0 +1,18 @@
+REST APIs
+
+REST stands for REpresentational State Transfer
+
+* Use existing standards of the web (HTTP, JSON, URL)
+* Endpoints are collection of data
+* We use GET, POST, PUT, and DELETE
+* Client and server
+* Requests are both stateless and cacheable
+
+CRUD
+Stand for Create Read Update Delete
+
+CRUD goes hand in hand with the http methods.
+## POST --> Create
+## GET --> Read
+## PUT/PATCH --> Update
+## DELETE --> DELETE
