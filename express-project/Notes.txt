@@ -15,4 +15,4 @@ CRUD goes hand in hand with the http methods.
 ## POST --> Create
 ## GET --> Read
 ## PUT/PATCH --> Update
-## DELETE --> DELETE
+## DELETE --> Delete
